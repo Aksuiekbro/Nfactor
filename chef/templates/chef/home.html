@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Beautiful Header Menu with Search Form</title>
+    <link rel="stylesheet" href="../../static/chef/style.css">
+    <style>
+        /* Basic styling for demonstration */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            width: 200px;
+        }
+        .search-button {
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            border-radius: 0 5px 5px 0;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container1">
+            <h1>Chef.in</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <form id="search-form" method="GET">
+                <input type="text" class="search-input" id="search-input" name="search" placeholder="Enter your search...">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+        <script>
+            document.getElementById("search-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevents the form from submitting normally
+
+                var searchInput = document.getElementById("search-input").value; // Get the value from the input field
+                var formAction = "http://localhost:8000/search/" + searchInput; // Encode the search value and update the form action
+                document.getElementById("search-form").action = formAction; // Update the form action
+                this.submit(); // Submit the form
+            });
+        </script>
+        <!-- <div class="container2">
+            <h2>Search for Recipes</h2>
+            <form action="#" method="GET" class="search-form">
+                <input type="text" name="search" placeholder="Search for recipes...">
+                <button type="submit">Search</button>
+            </form>
+        </div> -->
+    </main>
+
+    <!-- Your main content here -->
+
+</body>
+</html>
